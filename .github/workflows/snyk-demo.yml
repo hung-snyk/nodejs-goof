@@ -1,4 +1,4 @@
-name: Snyk Test
+name: Snyk Demo
 on: workflow_dispatch
 jobs:
   security:
