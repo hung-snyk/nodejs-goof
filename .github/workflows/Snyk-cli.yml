@@ -37,4 +37,3 @@ jobs:
 
     - name: Run Snyk Monitor
       run: snyk monitor
-      continue-on-error: true
