@@ -36,4 +36,4 @@ jobs:
       continue-on-error: true
 
     - name: Run Snyk Monitor
-      run: snyk monitor
+      run: snyk monitor --target-reference="$(git branch --show-current)"
