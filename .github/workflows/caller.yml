@@ -6,7 +6,7 @@ env:
       
 jobs:
   calling-workflow:
-    run: echo "$SNYK_TOKEN"
+    # run: echo "$SNYK_TOKEN"
     uses: hung-snyk/ci-template/.github/workflows/GHA-template.yml@main  # Specify repo and branch
     # with:
     #   SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
