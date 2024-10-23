@@ -1,12 +1,16 @@
 name: Caller Workflow
 
 on: workflow_dispatch
-env:
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      
+
 jobs:
   calling-workflow:
-    # run: echo "$SNYK_TOKEN"
-    uses: hung-snyk/ci-template/.github/workflows/GHA-template.yml@main  # Specify repo and branch
+    runs-on: ubuntu-latest
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    steps:
+      - name: declare variable
+        run: export SNYK_TOKEN=${{ secrets.SNYK_TOKEN }}
+      - name: calling template
+        uses: hung-snyk/ci-template/.github/workflows/GHA-template.yml@main  # Specify repo and branch
     # with:
     #   SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
