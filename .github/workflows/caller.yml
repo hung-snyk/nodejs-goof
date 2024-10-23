@@ -1,8 +1,7 @@
 name: Caller Workflow
 
 on: workflow_dispatch
-# env:
-#   SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
 jobs:
   calling-workflow:
     uses: hung-snyk/ci-template/.github/workflows/GHA-template.yml@main  # Specify repo and branch
