@@ -1,9 +1,9 @@
-name: CI Workflow
+name: Caller Workflow
 
 on: workflow_dispatch
 
 jobs:
   use-reusable-workflow:
     uses: hung-snyk/ci-template/.github/workflows/GHA-template.yml@main  # Specify repo and branch
-    with:
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    # with:
+    #   SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
