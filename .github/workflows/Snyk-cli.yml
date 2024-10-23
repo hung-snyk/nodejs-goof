@@ -22,18 +22,18 @@ jobs:
     - name: Install Snyk CLI
       run: npm install -g snyk
 
-    # - name: Authenticate Snyk
-    #   env:
-    #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-    #   run: snyk auth $SNYK_TOKEN
+    - name: Authenticate Snyk
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      run: snyk auth $SNYK_TOKEN
 
     - name: Run Snyk Code Test
       run: snyk code test
       continue-on-error: true
       
-    # - name: Run Snyk Test
-    #   run: snyk test
-    #   continue-on-error: true
+    - name: Run Snyk Test
+      run: snyk test
+      continue-on-error: true
 
-    # - name: Run Snyk Monitor
-    #   run: snyk monitor
+    - name: Run Snyk Monitor
+      run: snyk monitor
