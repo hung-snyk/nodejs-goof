@@ -1,9 +1,9 @@
 name: CI Workflow
 
-on: push
+on: workflow_dispatch
 
 jobs:
   use-reusable-workflow:
-    uses: .github/workflows/GHA-template.yml@main  # Specify repo and branch
+    uses: hung-snyk/ci-template/.github/workflows/GHA-template.yml@main  # Specify repo and branch
     with:
       token: ${{ secrets.API_TOKEN }}
