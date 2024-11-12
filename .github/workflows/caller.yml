@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 jobs:
   calling-workflow:
-    uses: hung-snyk/ci-template/.github/workflows/GHA-template.yml@main  # Specify repo and branch
+    uses: hung-snyk/ci-template/.github/workflows/snyk-template.yml@main  # Specify repo and branch
     with:
       flag: "--all-projects"
     secrets:
