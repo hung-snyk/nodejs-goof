@@ -6,6 +6,6 @@ jobs:
   calling-workflow:
     uses: hung-snyk/ci-template/.github/workflows/GHA-template.yml@main  # Specify repo and branch
     with:
-      flag: "monitor"
+      flag: "--all-projects"
     secrets:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
