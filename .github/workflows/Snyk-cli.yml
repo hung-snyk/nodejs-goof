@@ -34,6 +34,3 @@ jobs:
     - name: Run Snyk Test
       run: snyk test
       continue-on-error: true
-
-    - name: Run Snyk Monitor
-      run: snyk monitor
