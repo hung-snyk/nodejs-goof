@@ -1,0 +1,22 @@
+image: node:18
+
+pipelines:
+  custom:
+    build:
+      - step:
+          name: Build application
+          script:
+            - npm install
+    snyk-scan:
+      - step:
+          name: Snyk CLI Security Scan
+          caches:
+            - node
+          script:
+            - echo "Installing dependencies..."
+            - npm install -g snyk
+            - snyk auth $SNYK_TOKEN
+            - echo "Running Snyk code test..."
+            - snyk code test || true
+            - echo "Running Snyk open source test..."
+            - snyk test || true
