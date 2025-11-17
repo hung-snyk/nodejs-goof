@@ -1,0 +1,51 @@
+name: Snyk CLI Security Scan
+
+on: workflow_dispatch
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
+  #   branches:
+  #     - main
+
+jobs:
+  snyk:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+
+    - name: Install Snyk CLI
+      run: npm install -g snyk
+
+    - name: Authenticate Snyk
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      run: snyk auth $SNYK_TOKEN
+
+    - name: Run Snyk Source Code Test
+      run: snyk code test
+      continue-on-error: true
+      
+    - name: Run Snyk Open Source Test
+      run: snyk test
+      continue-on-error: true
+
+    #  Remove comments for container and iac test
+    # - name: Run Snyk Container Test
+    #   run: snyk container test
+    #   continue-on-error: true
+    
+    # - name: Run Snyk Infrastructure as Code Test
+    #   run: snyk iac test
+    #   continue-on-error: true
+
+    - name: Install Snyk-delta
+      run: npm install -g snyk-delta
+    - name: Run Snyk Open Source Test Delta
+      run: snyk test --json --print-deps | snyk-delta --baselineOrg 14b58768-b9c2-4cb3-812c-2acffca735d3 --baselineProject fe632598-c46a-4b26-a8ff-37369f1847b0 --setPassIfNoBaseline true
+      continue-on-error: true
