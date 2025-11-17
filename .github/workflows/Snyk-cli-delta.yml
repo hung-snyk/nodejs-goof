@@ -1,4 +1,4 @@
-name: Snyk CLI Security Scan
+name: Snyk CLI Delta Scan
 
 on: workflow_dispatch
   # push:
