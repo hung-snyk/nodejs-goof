@@ -47,5 +47,5 @@ jobs:
     - name: Install Snyk-delta
       run: npm install -g snyk-delta
     - name: Run Snyk Open Source Test Delta
-      run: snyk test --json --print-deps | snyk-delta --baselineOrg 14b58768-b9c2-4cb3-812c-2acffca735d3 --baselineProject 6722bf11-9b74-4e93-a5c5-ef92850ea19c --setPassIfNoBaseline true
+      run: snyk test --json --print-deps | snyk-delta --baselineOrg X --baselineProject X --setPassIfNoBaseline true
       continue-on-error: true
