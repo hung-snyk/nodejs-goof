@@ -1,0 +1,41 @@
+trigger:
+- manual
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'npm install and build'
+
+- script: |
+    npm install -g snyk
+    snyk auth $(SNYK_TOKEN)
+  displayName: 'npm install snyk and authenticate'
+
+- script: |
+    snyk test --all-projects
+  displayName: 'snyk open source test'
+  continueOnError: true
+
+- script: |
+    snyk code test
+  displayName: 'snyk code test'
+  continueOnError: true
+
+- script: |
+    snyk container test
+  displayName: 'snyk container test'
+  continueOnError: true
+
+- script: |
+    snyk iac test
+  displayName: 'snyk iac test'
+  continueOnError: true
