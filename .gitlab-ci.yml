@@ -1,0 +1,23 @@
+default:
+  image: node:16
+
+stages:          # List of stages for jobs, and their order of execution
+  - build
+  - snyk-test
+
+build-job:       # This job runs in the build stage, which runs first.
+  stage: build
+  script:
+    - npm ci
+
+snyk:
+  stage: snyk-test
+  script:
+      - npm install snyk -g
+      - snyk config environment SNYK-US-02
+      - snyk auth $SNYK_TOKEN
+      - snyk test --all-projects
+      - snyk code test
+      - snyk container test
+      - snyk iac test
+  allow_failure: true
